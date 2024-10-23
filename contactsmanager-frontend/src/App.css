@@ -1,0 +1,411 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blocked {
+    pointer-events: none;
+}
+
+.modal {
+    pointer-events: all;
+    z-index: 1;
+}
+
+.modal, .overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.overlay {
+    background: rgba(49, 49, 49, 0.8);
+}
+
+.modal-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #F5F5F5;
+    padding: 2rem 1.5rem;
+    border-radius: 15px;
+}
+
+a,
+a:visited {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* USER AUTH (LOGIN/REGISTER/FORGOT PASS) COMPONENTS */
+.auth-bg {
+    position: absolute;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.main-container {
+    background-color: hsla(0, 0%, 100%, .01);
+    border: 2px solid hsla(0, 0%, 100%, .7);
+    padding: 2rem 1rem;
+    border-radius: 1rem;
+    backdrop-filter: blur(16px) brightness(0.95);
+    color: #ffffff;
+    text-align: center;
+    width: 100%;
+    display: grid;
+    row-gap: 1rem;
+}
+
+.title-container {
+    font-size: 25.888px;
+}
+
+.input-container {
+    border: 2px solid hsla(0, 0%, 100%, .7);
+    padding-inline: 1.25rem;
+    border-radius: 4rem;
+    display: grid;
+    align-items: center;
+    column-gap: .75rem;
+    grid-template-columns: 1fr max-content;
+}
+
+.auth-button {
+    cursor: pointer;
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 4rem;
+    font-weight: 500;
+    color: #000000;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.auth-button:hover {
+    background-color: #FAF9F6;
+    box-shadow: 0 10px 20px -15px #000000;
+}
+.auth-button:active {
+    background-color: #E5E5E5;
+}
+
+.auth-input {
+    width: 100%;
+    background: none;
+    padding-block: 1rem;
+    border: none;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    caret-color: #ffffff;
+    font-size: 16px;
+    color: #ffffff;
+}
+.auth-input::placeholder {
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    font-size: 16px;
+}
+.auth-input:-webkit-autofill {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #ffffff;
+}
+
+
+/* DASHBOARD COMPONENT */
+.dashboard {
+    display: flex;
+    width: 97vw;
+    height: 95vh;
+    box-sizing: border-box;
+}
+
+/* CONTACTS COMPONENT */
+.contacts {
+    border-right: 1px solid grey;
+    flex: 1;
+    box-sizing: border-box;
+    padding: 0.5rem;
+}
+
+    /* CONTACTS NAV CONTAINER */
+    .contacts-nav {
+        display: flex;
+        column-gap: 1rem;
+        width: 100%;
+        border-bottom: 1px solid grey;
+        margin-bottom: 1rem;
+        color: grey;
+    }
+    .contacts-nav div {
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 5px;
+    }
+    .contacts-nav div:hover {
+        background-color: darkgrey;
+        color: #000000;
+    }
+    .contacts-nav div:active {
+        background-color: grey;
+        color: #000000;
+    }
+
+    /* CONTACTS SEARCH CONTAINER */
+    .contacts-search {
+        display: flex;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    .contacts-search-input {
+        display: grid;
+        grid-template-columns: 1.5rem 1fr;
+        background-color: rgb(238, 238, 238);
+        padding-right: 1rem;
+        padding-left: 0.5rem;
+        border-radius: 1rem;
+        box-sizing: border-box;
+        width: 100%;
+        color: grey;
+    }
+    .contacts-search-input input {
+        background: none;
+        padding-block: 0.75rem;
+        padding-inline: 0.25rem;
+        box-sizing: border-box;
+        border: none;
+        outline: none;
+        font-family: 'Poppins', sans-serif;
+        caret-color: #000000;
+        color: #000000;
+    }
+    .contacts-search-input i {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .contacts-search-add {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+    .contacts-search-add i {
+        font-size: 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 5px;
+    }
+    .contacts-search-add i:hover {
+        background-color: darkgrey;
+    }
+    .contacts-search-add i:active {
+        background-color: grey;
+    }
+
+    /* CONTACTS PEOPLE CONTAINER */
+    .contacts-people {
+        display: grid;
+        row-gap: 1rem;
+    }
+    .contacts-people-person {
+        position: relative;
+    }
+    .contacts-people-card {
+        display: grid;
+        grid-template-columns: 70px 1fr;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    .contacts-people-card:hover {
+        background-color: darkgrey;
+    }
+    .contacts-people-card:active {
+        background-color: grey;
+    }
+    .contacts-people-person-classify {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+    }
+    .contacts-people-person-classify i {
+        font-size: 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 5px;
+    }
+    .contacts-people-person-classify i:hover {
+        background-color: grey;
+    }
+    .contacts-people-person-classify i:active {
+        background-color: rgb(100, 100, 100);
+    }
+    .contacts-profile-pic {
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    .contacts-profile-pic img {
+        width: 100%;
+        height: auto;
+    }
+
+/* INFO CONTAINER */
+.info {
+    flex: 2;
+}
+
+    /* INFO PERSON CONTAINER */
+    .info-person {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 0.25rem;
+        box-sizing: border-box;
+        width: 100%;
+        position: relative;
+    }
+    .info-modify {
+        font-size: 1.3rem;
+        position: absolute;
+        display: flex;
+        column-gap: 0.5rem;
+        right: 0;
+    }
+    .info-modify i {
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 5px;
+    }
+    .info-modify i:hover {
+        background-color: darkgrey;
+    }
+    .info-modify i:active {
+        background-color: grey;
+    }
+    .info-profile-pic {
+        width: 6rem;
+        height: 6rem;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    .info-profile-pic img {
+        width: 100%;
+        height: auto;
+    }
+    .curved-line {
+        border: 1px solid grey;
+        width: 100%;
+        height: 6rem;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-radius: 50%;
+        margin-top: -4.5rem;
+        margin-bottom: 2rem;
+    }
+
+    /* INFO READ CONTAINER */
+    .info-read {
+        width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .info-container {
+        display: flex;
+        margin-top: 2rem;
+        width: 50%;
+    }
+    .left-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        font-size: 2rem;
+    }
+    .description {
+        font-size: 1rem;
+    }
+    .placeholder {
+        font-size: 0.75rem;
+        color: grey;
+    }
+
+
+/* UTILITY CSS */
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.center-vertical {
+    display: grid;
+    align-items: center;
+}
+.center-horizontal {
+    display: flex;
+    justify-content: center;
+}
+.hover-pointer {
+    cursor: pointer;
+}
+.small-font {
+    font-size: 9.888px;
+}
+.grey-text {
+    color: rgb(71, 71, 71);
+}
+.lighter-bold {
+    font-weight: 500;
+}
+.bold {
+    font-weight: bold;
+}
+.highlight-nav {
+    background-color: darkgrey;
+    color: #000000;
+}
+.highlight-contact {
+    background-color: darkgrey;
+}
+.clickable {
+    cursor: pointer;
+    border-radius: 0.25rem;
+}
+.clickable:hover {
+    background-color: darkgrey;
+}
+.clickable:active {
+    background-color: grey;
+}
+.email-link {
+    color: #000000;
+}
+.email-link:hover {
+    text-decoration: underline;
+}
