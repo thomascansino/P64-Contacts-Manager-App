@@ -19,7 +19,7 @@ function Info({ token, config, selectedContact, setSelectedContact, isEditModalO
     const getContact = async () => {
         try {
             if ( selectedContact ) {
-                const response = await axios.get(`http://localhost:5001/api/contacts/${selectedContact}`, config);
+                const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/contacts/${selectedContact}`, config);
                 setContactInfo(response.data);
                 console.log('Get info of selected contact:', response.data);
             };
@@ -30,7 +30,7 @@ function Info({ token, config, selectedContact, setSelectedContact, isEditModalO
 
     const updateLastContacted = async () => {
         try {
-            const response = await axios.put(`http://localhost:5001/api/contacts/${selectedContact}/lastContacted`, { lastContacted: new Date() }, config);
+            const response = await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/contacts/${selectedContact}/lastContacted`, { lastContacted: new Date() }, config);
             getContacts();
             console.log('Last contacted:', response.data.lastContacted);
         } catch (err) {

@@ -44,7 +44,7 @@ function EditModal({ closeEditModal, contactInfo, config, selectedContact, getCo
         }; 
 
         try {
-            const response = await axios.put(`http://localhost:5001/api/contacts/${selectedContact}`, formData, config);
+            const response = await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/contacts/${selectedContact}`, formData, config);
             console.log('Edited contact info:', response.data);
             closeEditModal();
             getContacts();

@@ -6,7 +6,7 @@ function DeleteModal({ closeDeleteModal, config, selectedContact, setSelectedCon
 
     const deleteContact = async () => {
         try {
-            const response = await axios.delete(`http://localhost:5001/api/contacts/${selectedContact}`, config);
+            const response = await axios.delete(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/contacts/${selectedContact}`, config);
             console.log('Deleted contact info:', response.data);
             closeDeleteModal();
             getContacts();

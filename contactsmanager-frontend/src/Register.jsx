@@ -45,7 +45,7 @@ function Register() {
         };
 
         try {
-            const response = await axios.post('http://localhost:5001/api/users/register', { username, email, password, confirmPassword });
+            const response = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/users/register`, { username, email, password, confirmPassword });
             console.log('Registered successfully:', response.data);
             alert('Registered successfully');
             navigate('/login');

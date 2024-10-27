@@ -41,7 +41,7 @@ function AddModal({ config, closeAddModal, getContacts, setSelectedContact }) {
         };
         
         try {
-            const response = await axios.post('http://localhost:5001/api/contacts', formData, config);
+            const response = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/contacts`, formData, config);
             console.log('Added contact info:', response.data);
             closeAddModal();
             getContacts();

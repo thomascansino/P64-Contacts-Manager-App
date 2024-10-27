@@ -25,7 +25,7 @@ function Dashboard() {
 
     const getContacts = async () => {
         try {
-            const response = await axios.get('http://localhost:5001/api/contacts', config);
+            const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/contacts`, config);
             console.log('Get all contacts of user:', response.data);  
             setContactsList(response.data);
         } catch (err) {
@@ -35,7 +35,7 @@ function Dashboard() {
 
     const updateLastStarred = async (id) => {
         try {
-            const response = await axios.put(`http://localhost:5001/api/contacts/${id}/lastStarred`, { lastStarred: new Date() }, config);
+            const response = await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/contacts/${id}/lastStarred`, { lastStarred: new Date() }, config);
             console.log('Last starred:', response.data.lastStarred);
         } catch (err) {
             console.error('Failed updating last starred field:', err.response?.data?.message || err.message || err);
@@ -44,7 +44,7 @@ function Dashboard() {
 
     const updateLastArchived = async (id) => {
         try {
-            const response = await axios.put(`http://localhost:5001/api/contacts/${id}/lastArchived`, { lastArchived: new Date() }, config);
+            const response = await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/contacts/${id}/lastArchived`, { lastArchived: new Date() }, config);
             console.log('Last archived:', response.data.lastArchived);
         } catch (err) {
             console.error('Failed updating last archived field:', err.response?.data?.message || err.message || err);
@@ -53,7 +53,7 @@ function Dashboard() {
 
     const toggleFields = async (id, fieldToToggle) => {
         try {
-            const response = await axios.put(`http://localhost:5001/api/contacts/${id}/toggleFields`, { fieldToToggle }, config);
+            const response = await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/contacts/${id}/toggleFields`, { fieldToToggle }, config);
             
             if ( fieldToToggle === 'starred' && response.data.starred) {
                 updateLastStarred(id);
