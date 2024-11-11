@@ -4,7 +4,6 @@ import Register from './Register.jsx'
 import ForgotPass from './ForgotPass.jsx'
 import PrivateRoute from './PrivateRoute.jsx'
 import Dashboard from './Dashboard.jsx'
-import DeleteModal from './modals/DeleteModal.jsx'
 import './App.css'
 
 function App() {
