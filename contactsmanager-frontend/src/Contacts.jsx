@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import AddModal from './modals/AddModal.jsx'
 import TimeAgo from './utility/TimeAgo.jsx'
 import './App.css'
@@ -6,7 +7,10 @@ import './App.css'
 function Contacts({ config, token, selectedContact, setSelectedContact, contactsList, getContacts, toggleFields, detectImageType }) {
     const [selectedNav, setSelectedNav] = useState('recent');
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+    const [searchContacts, setSearchContacts] = useState('');
     
+    const navigate = useNavigate();
+
     useEffect(() => {
         if ( !token ) {
             alert('You need to login first');
@@ -16,8 +20,13 @@ function Contacts({ config, token, selectedContact, setSelectedContact, contacts
         getContacts();
     }, [selectedNav, token]);
 
+
     const handleNavClick = (nav) => {
         setSelectedNav(nav);
+    };
+
+    const handleSearchContact = (e) => {
+        setSearchContacts(e.target.value);
     };
 
     const openAddModal = () => {
@@ -84,11 +93,31 @@ function Contacts({ config, token, selectedContact, setSelectedContact, contacts
             .map(contact => createContactComponent(contact))
     );
 
-    const recent = sortAndFilterContacts(() => true, 'lastContacted');
+    // handle navs w/ search function
+    const recent = sortAndFilterContacts(searchContacts ? 
+        (contact) => {
+            const fullName = `${contact.firstName} ${contact.lastName}`.toLowerCase();
 
-    const starred = sortAndFilterContacts(contact => contact.starred, 'lastStarred');
+            return fullName.includes(searchContacts.toLowerCase());
+        } :
+        () => true, 'lastContacted');
 
-    const archived = sortAndFilterContacts(contact => contact.archived, 'lastArchived');
+    const starred = sortAndFilterContacts(searchContacts ?
+        (contact) => {
+            const fullName = `${contact.firstName} ${contact.lastName}`.toLowerCase();
+
+            return fullName.includes(searchContacts.toLowerCase()) && contact.starred;
+        } :
+        (contact) => contact.starred, 'lastStarred');
+
+    const archived = sortAndFilterContacts(searchContacts ?
+        (contact) => {
+            const fullName = `${contact.firstName} ${contact.lastName}`.toLowerCase();
+
+            return fullName.includes(searchContacts.toLowerCase()) && contact.archived;
+        } :
+        contact => contact.archived, 'lastArchived');
+    
 
     let contacts;
 
@@ -119,12 +148,17 @@ function Contacts({ config, token, selectedContact, setSelectedContact, contacts
                 onClick={() => handleNavClick('archived')}>
                     Archived
                 </div>
+                <div onClick={() => navigate('/login')} className='contacts-nav-logout'>Logout</div>
             </div>
-
+            
             <div className='contacts-search'>
                 <div className='contacts-search-input'>
                     <i className="ri-search-line"></i>
-                    <input type='search' placeholder='Search contacts...'/>
+                    <input 
+                    onChange={handleSearchContact} 
+                    value={searchContacts} 
+                    type='text' 
+                    placeholder='Search contacts...'/>
                 </div>
                 <div className='contacts-search-add' onClick={openAddModal}>
                     <i className="ri-user-add-line"></i>

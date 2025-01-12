@@ -69,7 +69,7 @@ const getContact = asyncHandler(async (req, res) => {
 //@route PUT /api/contacts/:id
 //@access private
 const editContact = asyncHandler(async (req, res) => {
-    const { firstName, lastName, email, contact } = req.body;
+    const { firstName, lastName, contact } = req.body;
     
     const prevContact = await Contact.findById(req.params.id);
 
@@ -83,15 +83,9 @@ const editContact = asyncHandler(async (req, res) => {
         throw new Error(`You don't have permission to access other user contacts`);
     };
 
-    if ( !firstName || !lastName || !email || !contact ) {
+    if ( !firstName || !lastName || !contact ) {
         res.status(400);
         throw new Error(`Fill up all the fields required`);
-    };
-
-    const existingContact = await Contact.findOne({ user_id: req.user.id, email });
-    if ( existingContact ) {
-        res.status(400);
-        throw new Error('This contact already exists');
     };
 
     console.log(req.file)

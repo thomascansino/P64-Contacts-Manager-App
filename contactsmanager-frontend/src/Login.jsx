@@ -42,9 +42,11 @@ function Login() {
 
     return (
         <>
-            <img className='auth-bg' src={background} alt='cool backdrop' />
+            <div className='auth-bg-container'>
+                <img className='auth-bg' src={background} alt='cool backdrop' />
+            </div>
             
-            <form onSubmit={handleLogin}>
+            <form onSubmit={handleLogin} className='container'>
                 <div className='main-container'>
 
                     <div className='title-container'>

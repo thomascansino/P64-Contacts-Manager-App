@@ -26,7 +26,7 @@ function DeleteModal({ closeDeleteModal, config, selectedContact, setSelectedCon
             <div className='overlay' onClick={closeDeleteModal}></div>
             <div className='modal-form'>
 
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className='modal-form-container'>
                     <div>
                         Are you sure you want to delete this contact?
                     </div>

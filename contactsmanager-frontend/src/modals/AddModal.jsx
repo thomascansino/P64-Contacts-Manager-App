@@ -67,7 +67,7 @@ function AddModal({ config, closeAddModal, getContacts, setSelectedContact }) {
             <div className='overlay' onClick={closeAddModal}></div>
             <div className='modal-form'>
 
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className='modal-form-container'>
                     <div>
                         <input 
                         type='text' 
@@ -128,6 +128,7 @@ function AddModal({ config, closeAddModal, getContacts, setSelectedContact }) {
                         type='file'
                         accept='image/*'
                         onChange={handleImageUpload}
+                        className='image-input'
                         />
                     </div>
 

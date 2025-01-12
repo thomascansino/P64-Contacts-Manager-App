@@ -60,7 +60,7 @@ function Register() {
         <>
             <img className='auth-bg' src={background} alt='cool backdrop' />
             
-            <form onSubmit={handleRegister}>
+            <form onSubmit={handleRegister} className='container'>
                 <div className='main-container'>
                 
                 <div className='title-container'><span className='bold'>Register</span></div>

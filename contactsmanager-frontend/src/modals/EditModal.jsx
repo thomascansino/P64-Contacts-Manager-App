@@ -6,7 +6,6 @@ import '../App.css'
 function EditModal({ closeEditModal, contactInfo, config, selectedContact, getContacts, getContact }) {
     const [firstName, setFirstName] = useState(contactInfo.firstName);
     const [lastName, setLastName] = useState(contactInfo.lastName);
-    const [email, setEmail] = useState(contactInfo.email);
     const [contact, setContact] = useState(contactInfo.contact);
     const [description, setDescription] = useState(contactInfo.description);
     const [location, setLocation] = useState(contactInfo.location);
@@ -14,7 +13,7 @@ function EditModal({ closeEditModal, contactInfo, config, selectedContact, getCo
     const [isChecked, setIsChecked] = useState(false);
     
     const editContact = async () => {
-        if ( !firstName || !lastName || !email || !contact ) {
+        if ( !firstName || !lastName || !contact ) {
             alert('Fill up all the fields required');
             return;
         };
@@ -23,7 +22,6 @@ function EditModal({ closeEditModal, contactInfo, config, selectedContact, getCo
 
         formData.append('firstName', firstName);
         formData.append('lastName', lastName);
-        formData.append('email', email);
         formData.append('contact', contact);
         formData.append('description', description);
         formData.append('location', location);
@@ -72,7 +70,7 @@ function EditModal({ closeEditModal, contactInfo, config, selectedContact, getCo
             <div className='overlay' onClick={closeEditModal}></div>
             <div className='modal-form'>
 
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className='modal-form-container'>
                     <div>
                         <input 
                         type='text' 
@@ -88,15 +86,6 @@ function EditModal({ closeEditModal, contactInfo, config, selectedContact, getCo
                         placeholder='Last Name'
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
-                        />
-                    </div>
-
-                    <div>
-                        <input 
-                        type='email' 
-                        placeholder='Email' 
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
 
@@ -133,10 +122,11 @@ function EditModal({ closeEditModal, contactInfo, config, selectedContact, getCo
                         type='file'
                         accept='image/*'
                         onChange={handleImageUpload}
+                        className='image-input'
                         />
                     </div>
 
-                    <div>
+                    <div className='modal-form-checkbox-container'>
                         <input
                         type='checkbox' 
                         id='defaultCheckbox'
