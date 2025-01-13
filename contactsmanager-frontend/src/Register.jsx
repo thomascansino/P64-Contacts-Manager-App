@@ -62,51 +62,63 @@ function Register() {
     };
 
     return (
-        <>
-            <img className='auth-bg' src={background} alt='cool backdrop' />
+        <div className='document-container'>
             
-            <form onSubmit={handleRegister} className='container'>
-                <div className='main-container'>
-                
-                <div className='title-container'><span className='bold'>Register</span></div>
-                
-                <div className='input-container'>
-                    <input type='text' placeholder='Username' value={username} onChange={handleUsername} className='auth-input' />
-                    <i className='ri-user-line'></i>
-                </div>
+            <div className='parent-container'>
 
-                <div className='input-container'>
-                    <input type='email' placeholder='Email ID' value={email} onChange={handleEmail} className='auth-input' />
-                    <i className="ri-mail-line"></i>
+                <div className='slogan-container'>
+                    <div className='first-line'>Manage Your Connections</div>
+                    <div className='second-line'>With Ease.</div>
                 </div>
+            
+                <form onSubmit={handleRegister} className='container'>
+                    <div className='auth-bg-container'>
+                        <img className='auth-bg' src={background} alt='cool backdrop' />
+                    </div>
+                    
+                    <div className='main-container'>
+                    
+                    <div className='title-container'><span className='bold'>Register</span></div>
+                    
+                    <div className='input-container'>
+                        <input type='text' placeholder='Username' value={username} onChange={handleUsername} className='auth-input' />
+                        <i className='ri-user-line'></i>
+                    </div>
 
-                <div className='input-container'>
-                    <input type='password' placeholder='Password' value={password} onChange={handlePassword} className='auth-input' />
-                    <i className="ri-lock-2-line"></i>
-                </div>
+                    <div className='input-container'>
+                        <input type='email' placeholder='Email ID' value={email} onChange={handleEmail} className='auth-input' />
+                        <i className="ri-mail-line"></i>
+                    </div>
 
-                <div className='input-container'>
-                    <input type='password' placeholder='Confirm Password' value={confirmPassword} onChange={handleConfirmPassword} className='auth-input' />
-                    <i className="ri-lock-2-line"></i>
-                </div>
+                    <div className='input-container'>
+                        <input type='password' placeholder='Password' value={password} onChange={handlePassword} className='auth-input' />
+                        <i className="ri-lock-2-line"></i>
+                    </div>
 
-                <div>
-                    { isLoading ?
-                    <ClipLoader 
-                    color='#d1d5db'
-                    loading={isLoading}
-                    size={25}
-                    /> :
-                    <button type='submit' className='auth-button'>Register</button>}
-                </div>
+                    <div className='input-container'>
+                        <input type='password' placeholder='Confirm Password' value={confirmPassword} onChange={handleConfirmPassword} className='auth-input' />
+                        <i className="ri-lock-2-line"></i>
+                    </div>
 
-                <div>
-                    <Link to='/login'><span className='lighter-bold small-font'>Go back to login page</span></Link>
-                </div>
+                    <div>
+                        { isLoading ?
+                        <ClipLoader 
+                        color='#d1d5db'
+                        loading={isLoading}
+                        size={25}
+                        /> :
+                        <button type='submit' className='auth-button'>Register</button>}
+                    </div>
 
-                </div>
-            </form>
-        </>
+                    <div>
+                        <Link to='/login'><span className='lighter-bold small-font'>Go back to login page</span></Link>
+                    </div>
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
     );
 };
 

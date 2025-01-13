@@ -11,36 +11,48 @@ function ForgotPass() {
     }, []);
     
     return (
-        <>
-            <img className='auth-bg' src={background} alt='cool backdrop' />
+        <div className='document-container'>
             
-            <form className='container'>
-                <div className='main-container'>
+            <div className='parent-container'>
 
-                    <div className='title-container'>
-                        <span className='bold'>Forgot Password?</span>
+                <div className='slogan-container'>
+                    <div className='first-line'>Manage Your Connections</div>
+                    <div className='second-line'>With Ease.</div>
+                </div>
+
+                <form className='container'>
+                    <div className='auth-bg-container'>
+                        <img className='auth-bg' src={background} alt='cool backdrop' />
                     </div>
                     
-                    <div className='input-container'>
-                        <input type='email' placeholder='Email ID' className='auth-input' />
-                        <i className="ri-mail-line"></i>
-                    </div>
+                    <div className='main-container'>
 
-                    <div>
-                        <button type='submit' className='auth-button'>Next</button>
-                    </div>
+                        <div className='title-container'>
+                            <span className='bold'>Forgot Password?</span>
+                        </div>
+                        
+                        <div className='input-container'>
+                            <input type='email' placeholder='Email ID' className='auth-input' />
+                            <i className="ri-mail-line"></i>
+                        </div>
 
-                    <div>
-                        <span className='small-font'>Don't have an account? <Link to='/register'><span className='lighter-bold small-font'>Register</span></Link></span>
-                    </div>
+                        <div>
+                            <button type='submit' className='auth-button'>Next</button>
+                        </div>
 
-                    <div>
-                        <Link to='/login'><span className='lighter-bold small-font'>Go back to login page</span></Link>
-                    </div>
+                        <div>
+                            <span className='small-font'>Don't have an account? <Link to='/register'><span className='lighter-bold small-font'>Register</span></Link></span>
+                        </div>
 
-                </div>
-            </form>
-        </>
+                        <div>
+                            <Link to='/login'><span className='lighter-bold small-font'>Go back to login page</span></Link>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
     );
 };
 

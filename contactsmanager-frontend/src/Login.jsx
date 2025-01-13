@@ -46,49 +46,59 @@ function Login() {
     };
 
     return (
-        <>
-            <div className='auth-bg-container'>
-                <img className='auth-bg' src={background} alt='cool backdrop' />
-            </div>
+        <div className='document-container'>
             
-            <form onSubmit={handleLogin} className='container'>
-                <div className='main-container'>
+            <div className='parent-container'>
 
-                    <div className='title-container'>
-                        <span className='bold'>Login</span>
+                <div className='slogan-container'>
+                    <div className='first-line'>Manage Your Connections</div>
+                    <div className='second-line'>With Ease.</div>
+                </div>
+                
+                <form onSubmit={handleLogin} className='container'>
+                    <div className='auth-bg-container'>
+                        <img className='auth-bg' src={background} alt='cool backdrop' />
                     </div>
                     
-                    <div className='input-container'>
-                        <input type='email' placeholder='Email ID' value={email} onChange={handleEmail} className='auth-input' />
-                        <i className="ri-mail-line"></i>
-                    </div>
+                    <div className='main-container'>
 
-                    <div className='input-container'>
-                        <input type='password' placeholder='Password' value={password} onChange={handlePassword} className='auth-input' />
-                        <i className="ri-lock-2-line"></i>
-                    </div>
+                        <div className='title-container'>
+                            <span className='bold'>Login</span>
+                        </div>
+                        
+                        <div className='input-container'>
+                            <input type='email' placeholder='Email ID' value={email} onChange={handleEmail} className='auth-input' />
+                            <i className="ri-mail-line"></i>
+                        </div>
 
-                    <div>
-                        <Link to='/forgot-password'><span className='lighter-bold hover-pointer small-font'>Forgot Password?</span></Link>
-                    </div>
+                        <div className='input-container'>
+                            <input type='password' placeholder='Password' value={password} onChange={handlePassword} className='auth-input' />
+                            <i className="ri-lock-2-line"></i>
+                        </div>
 
-                    <div>
-                        { isLoading ? 
-                        <ClipLoader 
-                        color='#d1d5db'
-                        loading={isLoading}
-                        size={25}
-                        /> :
-                        <button type='submit' className='auth-button'>Login</button>}
-                    </div>
+                        <div>
+                            <Link to='/forgot-password'><span className='lighter-bold hover-pointer small-font'>Forgot Password?</span></Link>
+                        </div>
 
-                    <div>
-                        <span className='small-font'>Don't have an account? <Link to='/register'><span className='lighter-bold small-font'>Register</span></Link></span>
-                    </div>
+                        <div>
+                            { isLoading ? 
+                            <ClipLoader 
+                            color='#d1d5db'
+                            loading={isLoading}
+                            size={25}
+                            /> :
+                            <button type='submit' className='auth-button'>Login</button>}
+                        </div>
 
-                </div>
-            </form>
-        </>
+                        <div>
+                            <span className='small-font'>Don't have an account? <Link to='/register'><span className='lighter-bold small-font'>Register</span></Link></span>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
     )
 };
 

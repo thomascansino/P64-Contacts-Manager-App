@@ -93,26 +93,135 @@ button {
 
 a,
 a:visited {
-  color: #ffffff;
-  text-decoration: none;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.document-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.parent-container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 20px -5px #1f2937;
+}
+
+.slogan-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    color: #374151;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+    padding: 16px;
+}
+
+@media (max-width: 767px) {
+    .document-container {
+      padding: 16px;
+    }
+    .parent-container {
+      grid-template-rows: 1fr 1fr;
+    } 
+    .slogan-container {
+        padding: 16px;
+        text-align: center;
+    }
+    .auth-bg {
+      border-bottom-right-radius: 12px;
+      border-bottom-left-radius: 12px;
+    }
+    .first-line {
+      font-weight: 500;
+      font-size: 39px;
+    }
+    .second-line {
+      font-size: 24px;
+    }
+}
+  
+@media (max-width: 1023px) and (min-width: 768px) {
+    .document-container {
+        padding: 80px;
+    }
+    .parent-container {
+        grid-template-columns: 1fr 1fr;
+    } 
+    .slogan-container {
+        padding: 16px;
+        font-size: 39px;
+        text-align: right;
+    }
+    .auth-bg {
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
+    }
+    .first-line {
+        font-weight: 500;
+        font-size: 48px;
+    }
+    .second-line {
+        font-size: 30px;
+    }
+}
+  
+@media (min-width: 1024px) {
+    .document-container {
+        padding: 128px;
+    }
+    .parent-container {
+        grid-template-columns: 1fr 1fr;
+    }  
+    .slogan-container {
+        padding: 48px;
+        font-size: 39px;
+        text-align: right;
+    }
+    .auth-bg {
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
+    }
+    .first-line {
+        font-weight: 500;
+        font-size: 55px;
+    }
+    .second-line {
+        font-size: 39px;
+    }
 }
 
 /* USER AUTH (LOGIN/REGISTER/FORGOT PASS) COMPONENTS */
-.auth-bg {
+.auth-bg-container {
     position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.auth-bg {
     object-fit: cover;
     object-position: center;
     width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
-}
-
-.container {
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    box-sizing: border-box;
 }
 
 .main-container {
