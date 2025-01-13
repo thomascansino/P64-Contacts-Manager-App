@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
+import ClipLoader from 'react-spinners/ClipLoader'
 import defaultPictureURL from '../assets/defaultpicture.jpg'
 import '../App.css'
 
@@ -11,6 +12,7 @@ function EditModal({ closeEditModal, contactInfo, config, selectedContact, getCo
     const [location, setLocation] = useState(contactInfo.location);
     const [selectedImage, setSelectedImage] = useState(null);
     const [isChecked, setIsChecked] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     
     const editContact = async () => {
         if ( !firstName || !lastName || !contact ) {
@@ -42,13 +44,16 @@ function EditModal({ closeEditModal, contactInfo, config, selectedContact, getCo
         }; 
 
         try {
+            setIsLoading(true);
             const response = await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/contacts/${selectedContact}`, formData, config);
             console.log('Edited contact info:', response.data);
             closeEditModal();
             getContacts();
             getContact();
+            setIsLoading(false);
         } catch (err) {
             console.error('Failed editing contact info:', err.response?.data?.message || err.message || err);
+            setIsLoading(false);
         };
         
     };
@@ -139,7 +144,13 @@ function EditModal({ closeEditModal, contactInfo, config, selectedContact, getCo
                     </div>
 
                     <div>
-                        <button type='submit'>Edit Contact</button>
+                        { isLoading ?
+                        <ClipLoader 
+                        color='#4b5563'
+                        loading={isLoading}
+                        size={20}
+                        /> :
+                        <button type='submit'>Edit Contact</button>}
                     </div>
                 </form>
 

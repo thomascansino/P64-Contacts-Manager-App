@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
+import ClipLoader from 'react-spinners/ClipLoader'
 import defaultPictureURL from '../assets/defaultpicture.jpg'
 import '../App.css'
 
@@ -11,6 +12,7 @@ function AddModal({ config, closeAddModal, getContacts, setSelectedContact }) {
     const [description, setDescription] = useState('');
     const [location, setLocation] = useState('');
     const [selectedImage, setSelectedImage] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     const createContact = async () => {
         if ( !firstName || !lastName || !email || !contact ) {
@@ -41,13 +43,16 @@ function AddModal({ config, closeAddModal, getContacts, setSelectedContact }) {
         };
         
         try {
+            setIsLoading(true);
             const response = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/contacts`, formData, config);
             console.log('Added contact info:', response.data);
             closeAddModal();
             getContacts();
             setSelectedContact(response.data._id);
+            setIsLoading(false);
         } catch (err) {
             console.error('Failed to create contact:', err.response?.data?.message || err.message || err);
+            setIsLoading(false);
         };
     };
 
@@ -133,7 +138,13 @@ function AddModal({ config, closeAddModal, getContacts, setSelectedContact }) {
                     </div>
 
                     <div>
-                        <button type='submit'>Add Contact</button>
+                        { isLoading ?
+                        <ClipLoader 
+                        color='#4b5563'
+                        loading={isLoading}
+                        size={20}
+                        /> :
+                        <button type='submit'>Add Contact</button>}
                     </div>
                 </form>
 
